@@ -8,11 +8,14 @@ app.get('/', function(request, response){
   });
 
 
-  app.get('/js/app', function(request, response){
-    response.sendFile(path.join(__dirname, "../public/js/app.js"));
-  });
+
+  // vvvvvvvv these are served static vvvvvvvvv //
   
-  app.get('/css/style', function(request, response){
-    response.sendFile(path.join(__dirname, "../public/css/style.css"));
-  });
+  // app.get('/js/app', function(request, response){
+  //   response.sendFile(path.join(__dirname, "../public/js/app.js"));
+  // });
+  
+  // app.get('/css/style', function(request, response){
+  //   response.sendFile(path.join(__dirname, "../public/css/style.css"));
+  // });
 }
