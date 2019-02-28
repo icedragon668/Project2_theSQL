@@ -44,5 +44,10 @@ module.exports = function (connection, Sequelize) {
             }
         }
     });
+
+    Monster.associate = function(models) {
+        Monster.belongsTo(models.Location);
+    };
+
     return Monster;
 }
