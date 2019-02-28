@@ -9,11 +9,12 @@ app.use(express.json());
 
 app.use(express.static(path.join(__dirname, "./public")));
 
-require(path.join(__dirname, "./routes/api-routes.js"))(app);
-require(path.join(__dirname, "./routes/html-routes.js"))(app);
+require(path.join(__dirname, "./routes/apiRoutes.js"))(app);
+require(path.join(__dirname, "./routes/htmlRoutes.js"))(app);
 
 db.sequelize.sync({force:false}).then(function(){
     app.listen(PORT, function(){
         console.log(`Ears on ${PORT} good buddy`)
     });
 });
+
