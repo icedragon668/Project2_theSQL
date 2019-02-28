@@ -4,53 +4,46 @@ console.log("Copy?")
 
 const seedMonster = [
     {
-        "id": 1,
-        'monster_name': "goblin",
-        'attack': 1,
-        'speed': 1,
-        'hp': 10,
-        'item': "gobble berry",
-        'gold': 1,
-        'xp': 1
-    }
+"mobName": "goblin", //ref by name
+"mobStats": "1,1,10", //atk, spd, hp
+"lootTable": "potion", //ref name
+"LocationId": "1"
+    } //associated to a location
 ]
 
 const seedLoc = [
     {
-        "id": 1,
-        "location_name": 'forest',
-        "monsters": "goblin kobold sprite TA",
-        "encounters": "battle trap treasure npc tba"
-    }
+        "locationName": 'Forest'
+    } //associate mobs, traps
 ]
-/*
+
 const seedItem = [
     {
-        "id": "id",
-        "name": "name",
-        "cost": "cost",
-        "damage": "dmg" //(null),
+        "itemName": "potion",
+        "itemType": "chest",
+        "itemProperties": "1,-5" //price, damage
 
     }
 ]
 
-const seedNPC = [
+const seedTrap = [
     {
-        id: id,
-        name: name,
-        event1: shop, //null
-        event2: talk,
-    }
+        "trapName": "branchFall",
+        "trapEffect": "-3", //damage
+    } //associate location
 ]
 
-const seedEvent = [
+const seedPlayer = [
     {
-        //events have options while encouters do not
-        //players: eg monster or npc
-        //path: pick a script
+        "username": "bob",
+        "password": "pass",
+        "encounterCount": 0,
+        "stats": "2,1,20",//atk, spd, hp, itembuffs
+        "inventory": "potion,2;" //string, calls name,amount;
     }
 ]
 
+/*
 const seedEncounters = [  //maybe not needed
     {
         //events have options while encouters do not
@@ -88,8 +81,9 @@ const seedAchieve = [{
 }]
 */
 
+
 db.sequelize.sync({ force: true }).then(function () {
-    db.Monster.bulkCreate(seedMonster)
+    db.Mob.bulkCreate(seedMonster)
         .then(function (rows) {
             console.log(`\n\nINSERTED into database\n\n`);
             db.sequelize.close();
@@ -102,6 +96,40 @@ db.sequelize.sync({ force: true }).then(function () {
 
 db.sequelize.sync({ force: true }).then(function () {
     db.Location.bulkCreate(seedLoc)
+        .then(function (rows) {
+            console.log(`\n\nINSERTED into database\n\n`);
+            db.sequelize.close();
+        })
+        .catch(function (err) {
+            console.log("\n\nERROR:", err);
+        });
+})
+
+
+db.sequelize.sync({ force: true }).then(function () {
+    db.Item.bulkCreate(seedItem)
+        .then(function (rows) {
+            console.log(`\n\nINSERTED into database\n\n`);
+            db.sequelize.close();
+        })
+        .catch(function (err) {
+            console.log("\n\nERROR:", err);
+        });
+})
+
+db.sequelize.sync({ force: true }).then(function () {
+    db.Player.bulkCreate(seedPlayer)
+        .then(function (rows) {
+            console.log(`\n\nINSERTED into database\n\n`);
+            db.sequelize.close();
+        })
+        .catch(function (err) {
+            console.log("\n\nERROR:", err);
+        });
+})
+
+db.sequelize.sync({ force: true }).then(function () {
+    db.Trap.bulkCreate(seedTrap)
         .then(function (rows) {
             console.log(`\n\nINSERTED into database\n\n`);
             db.sequelize.close();

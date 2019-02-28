@@ -1,26 +1,28 @@
-module.exports = function (connection, Sequelize) {
-    const Location = connection.define('Location', {
-        location_name: {
+module.exports = function(connection, Sequelize) {
+    const Location = connection.define("Location", {
+        locationName: {
             type: Sequelize.STRING,
             allowNull: false,
             validate: {
-                notEmpty: true
-            }
-        },
-        monsters: {
-            type: Sequelize.STRING,
-            allowNull: false,
-            validate: {
-                notEmpty: true
-            }
-        },
-        encounters: {
-            type: Sequelize.STRING,
-            allowNull: false,
-            validate: {
-                notEmpty: true
+                notEmpty: true,
+                isAlphanumeric: true
             }
         }
     });
+
+
+    Location.associate = function(models) {
+        Location.hasMany(models.Mob, {
+            foreignKey: {
+                allowNull: true
+            }
+        });
+        Location.hasMany(models.Trap, {
+            foreignKey: {
+                allowNull: true
+            }
+        });
+    };
+
     return Location;
-}
+};
