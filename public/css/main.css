@@ -1,0 +1,34 @@
+#front-page {
+    border: 1px solid black;
+    width: 80%;
+    text-align: center;
+    margin-top: 20%;
+    margin-left: 10%;
+    padding: 50px;
+}
+
+#newUser {
+    margin-right: 10%;
+}
+
+#existingUser, #newUser {
+    display: inline-block;
+    text-align: center;
+}
+
+.btn-large {
+    background-color: #29b6f6;
+}
+
+.location {
+    border: 1px solid black;
+    width: 15%;
+}
+
+#townHeader {
+    text-align: center;
+}
+
+#locationList {
+    float: right;
+}
