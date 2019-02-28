@@ -12,16 +12,18 @@ module.exports = function(connection, Sequelize) {
 
 
     Location.associate = function(models) {
-        Location.hasMany(models.Mob, {
-            foreignKey: {
-                allowNull: true
-            }
-        });
+
         Location.hasMany(models.Trap, {
             foreignKey: {
                 allowNull: true
             }
         });
+
+        Location.hasMany(models.Monster, {
+            foreingnKey: {
+                allowNull: true
+            }
+        })
     };
 
     return Location;

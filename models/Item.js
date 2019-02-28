@@ -1,6 +1,6 @@
 module.exports = function (connection, Sequelize) {
     const Item = connection.define("Item", {
-        itemName: {
+        itemname: {
             type: Sequelize.STRING,
             allowNull: false,
             validate: {
