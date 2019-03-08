@@ -7,7 +7,9 @@ const db = require(path.join(__dirname, "./models"));
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 
-app.use(express.static(path.join(__dirname, "./public")));
+if (process.env.NODE_ENV === "production") {
+    app.use(express.static("client/build"));
+}
 
 require(path.join(__dirname, "./routes/apiRoutes.js"))(app);
 require(path.join(__dirname, "./routes/htmlRoutes.js"))(app);
